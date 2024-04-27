@@ -1,13 +1,17 @@
+import { DUMMY_NEWS } from "@/dummy-news";
+
 export default function NewsDetailsPage({ params }) {
+  const newsSlug = params.detail;
+  const newsItem = DUMMY_NEWS.find(newsItem=>newsItem.slug===newsSlug)
   return (
     <>
-    <h1>{params.detail}</h1>
+    <header className="news-article">
+      <img src={`/images/news/${newsItem.image}`}/>
+    <h1>{newsItem.title}</h1>
+    <time dateTime={newsItem.date}>{newsItem.date}</time>
+    </header>
       <p>
-        Eu sunt sit sint magna excepteur magna sunt dolore ex in sit ea mollit
-        exercitation. Consectetur irure elit sunt proident tempor ipsum id aute
-        ea Lorem eiusmod elit ea. Sint velit magna incididunt ullamco esse esse
-        cupidatat aute Lorem minim amet officia velit. Ex cupidatat labore nisi
-        nostrud.
+        News ID: {newsItem.id}
       </p>
     </>
   );
